@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+<!-- {% load bootstrap4 %} -->
+<!-- {% block title %}Edit{% endblock title %}
+{% block content %} -->
+<h2>Record new Transaction</h2>
+
+<form action="/new_transaction" method="post" >
+    {% csrf_token %}
+    <!-- {% bootstrap_form form %} -->
+    <!-- {% buttons %} -->
+    <p>
+      <Label>Transaction Type</Label>
+    <select name="transaction_type">
+        <option value="CREDIT">CREDIT</option>
+        <option value="DEBIT">DEBIT</option>
+      </select>
+    </p>
+    <p>
+      <Label>Transaction amount</Label>
+    <input type="text"  name="transaction_amount">
+    </p>
+    <p>
+      <Label>Transaction description</Label>
+    <input type="text"  name="transaction_description">
+    </p>
+    <p>
+      <Label>Transaction date  </Label>
+    <input type="date"  name="transaction_date" id="theDate">
+    </p>
+    <p>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </p>
+    
+    <!-- {% endbuttons %} -->
+</form>
+
+{% endblock content %}

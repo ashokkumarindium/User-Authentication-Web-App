@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+<h1>{{welcome}}</h1>
+<br>
+
+<hr>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+<script>
+  {% if message %}
+  alert('{{ message }}');
+  {% endif %} 
+  
+</script>
+
+
+  <p>Your Coupon Balance : {{balance}}</p>
+  <p>
+    <table>
+      <tr>
+        <th>Transaction Date</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Available Balance</th>
+      </tr>
+      
+      {% for item in transactions %}
+      <tr>
+          <td>{{item.transaction_date}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.amount}}</td>
+          <td>{{item.balance}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </p>
+  <p>
+    <a href="{% url 'authapp:edit' %}" class="btn btn-primary">Record New transaction</a> <a href="{% url 'authapp:transfer' %}" class="btn btn-primary">Transfer Coupon</a> 
+  </p>
+{% endblock content %}
